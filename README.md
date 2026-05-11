@@ -26,7 +26,7 @@ This blog is about that gap — the ideas, the architecture, and the patterns th
 
 ## What's inside
 
-### [The State of Play](./block-00/00-index.md) — 5 articles, ~23 min
+### [The State of Play](./block-00/00-index.md) — 5 articles, ~18 min
 
 Where AI infrastructure actually stands, who's affected, and why the gap is fixable.
 
@@ -36,7 +36,7 @@ Where AI infrastructure actually stands, who's affected, and why the gap is fixa
 - [The Win-Win Thesis](./block-00/04-the-win-win-thesis.md) — why better architecture helps both sides simultaneously
 - [Why I'm Writing This](./block-00/05-why-im-writing-this.md) — motivation, constraints, what adoption looks like
 
-### [Building the Agentic Operating System](./block-01/00-index.md) — 7 articles, ~32 min
+### [Building the Agentic Operating System](./block-01/00-index.md) — 7 articles, ~70 min
 
 The technical core. What the missing infrastructure layer looks like and how to build it.
 
@@ -48,11 +48,11 @@ The technical core. What the missing infrastructure layer looks like and how to 
 - [Why Monolithic Models Won](./block-01/06-monolithic-models-vs-specialized-experts.md) — MoE, distillation, and when tiny specialists beat generalists
 - [Infrastructure Is the Only Moat](./block-01/07-infrastructure-is-the-only-moat.md) — models swap in an hour; accumulated operational wisdom doesn't
 
-### [Architecture Over Optimization](./block-03/00-index.md) — 1 article, ~5 min
+### Architecture Over Optimization — *coming soon*
 
 When the architecture is wrong, optimization is theater. Cases where the industry invests in making a broken design run faster — and what the alternative looks like.
 
-- [The Inference Optimization That Shouldn't Exist](./block-03/01-the-inference-optimization-that-shouldnt-exist.md) — most long-context inference optimization solves a problem that shouldn't arise
+- *The Inference Optimization That Shouldn't Exist* — most long-context inference optimization solves a problem that shouldn't arise
 
 ---
 
