@@ -1,0 +1,60 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.#*
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# AI coding assistants
+.cursor/
+.cursorrules
+.claude/
+CLAUDE.md
+.aider*
+.copilot/
+.github/copilot/
+.qoder/
+*.ai-chat
+
+# Node (if any tooling lands)
+node_modules/
+
+# Build artifacts
+*.tmp
+*.bak
+*.orig
