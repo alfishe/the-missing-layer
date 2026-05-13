@@ -40,6 +40,23 @@ Why this matters for the architecture: it means the substrate described below â€
 
 The stateless contract is a feature, not a limitation. It doesn't conflict with any of the substrate's logic. It enables it.
 
+```mermaid
+graph TD
+    subgraph "Client Side (Source of Truth)"
+        TEXT["Full text history<br/>Persisted in local store"]
+        SUBSTRATE["Substrate Layer<br/>Structured metadata,<br/>branches, references,<br/>transactions"]
+    end
+
+    subgraph "Provider Side (Ephemeral)"
+        KV["KV Cache<br/>Computed attention tensors<br/>TTL: 5 min - 1 hour"]
+        CC["cache_control breakpoints<br/>Up to 4 per request"]
+    end
+
+    TEXT -->|"Each request sends<br/>full history"| KV
+    SUBSTRATE -->|"Decides what to<br/>include in request"| TEXT
+    CC -->|"Hints for cache<br/>management"| KV
+```
+
 ## Shadow Context: Don't Touch the Live Prefix
 
 The key insight: **don't modify the live context at all.** Maintain a parallel shadow copy that's continuously compressed, ready to swap in when the threshold hits.

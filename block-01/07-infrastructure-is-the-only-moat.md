@@ -2,6 +2,48 @@
 
 The operational and tactical layers described in previous articles — shadow compaction, supervisor, psychologist, hub, FSM enforcement — are necessary but insufficient. They solve today's problems. What's entirely absent from current agent stacks is the **strategic** layer: the infrastructure for reproducing, expanding, and evolving agent capabilities over months and years. This is the difference between a "working team" and an "industry."
 
+```mermaid
+graph TD
+    subgraph "Kernel"
+        SUB["Substrate<br/>Event log, context tree,<br/>knowledge graph"]
+        FSM["FSM Enforcement<br/>Stream interrupt,<br/>rollback, transitions"]
+    end
+
+    subgraph "System Services"
+        SUPERVISOR["Supervisor<br/>Pattern learner"]
+        PSYCH["Psychologist<br/>Health monitor"]
+        HUB2["Hub<br/>Service discovery"]
+        TRIAGE2["Triage<br/>Data preprocessor"]
+        VERIFY["Verifier<br/>Quality gate"]
+    end
+
+    subgraph "Userland"
+        PRIMARY["Primary Agent<br/>Frontier model"]
+    end
+
+    PRIMARY --> SUPERVISOR
+    PRIMARY --> HUB2
+    PRIMARY --> TRIAGE2
+    SUPERVISOR --> SUB
+    PSYCH --> SUB
+    HUB2 --> SUB
+    TRIAGE2 --> SUB
+    VERIFY --> FSM
+    FSM --> PRIMARY
+```
+
+| OS Concept | Agent Equivalent |
+|---|---|
+| Kernel | Substrate (event log, context tree, knowledge graph) + FSM enforcement |
+| System services | Supervisor, psychologist, hub, triage, verifier |
+| Userland | Primary agent |
+| Process control | Stream interrupt, rollback, transactional commit/abort |
+| Observability | Health metrics, marker catalog, usage stats, structural diffs |
+| Service discovery | Hub-of-hubs |
+| Memory management | Selective commit, hierarchical compaction, importance ranking |
+
+Each role has the right compute envelope: frontier model for primary reasoning, local pinned model for verification and health monitoring, cheap model for triage and pattern matching. The sections below cover what's still missing — the strategic infrastructure that makes this system sustainable over months and years.
+
 ## Balance Accounting: Knowing Where the Money Goes
 
 There is no **flow-level balance sheet** in any agent architecture today. Each component has its metrics, but nobody tracks the flows between them. Critical questions that can't be answered without balance accounting:

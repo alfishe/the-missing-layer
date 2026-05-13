@@ -37,7 +37,7 @@ Step back from the architecture and a pattern emerges: every component has a dir
 Why do frontier labs keep building ever-larger models that cram everything into one monolith, instead of a hundred specialized experts on a shared bus? Because MoE architectures already do exactly that — at per-token granularity. But for local inference at batch=1, the calculus flips entirely. And with distillation, you can build your own tiny experts that match 70B generalists in narrow domains for the cost of a weekend on a single GPU.
 
 ### 7. [Infrastructure Is the Only Moat](./07-infrastructure-is-the-only-moat.md)
-**~3 min read**
+**~4 min read**
 
 Models can be swapped in an hour. Providers in a day. Frameworks in a week. But months of accumulated operational wisdom — clinical observations, tool effectiveness data, behavioral patterns, calibrated supervisor rules — cannot be bought, copied, or generated. The gap in current agent stacks isn't a missing feature; it's a missing architectural layer. And whoever builds it first owns a structural advantage that no model upgrade can replicate.
 
