@@ -33,6 +33,35 @@ flowchart LR
     end
 ```
 
+The structural diagram above shows *who talks to whom*. What makes it a closed loop is the **process** — a repeatable cycle where every action is measured against a target function, deviations are corrected, and the result feeds back into the next iteration:
+
+```mermaid
+flowchart TD
+    ACT["① Agent executes<br/>next action"] --> OBS["② Supervisor observes<br/>action + context delta"]
+    OBS --> CMP["③ Compare against target function:<br/>minimize context waste<br/>per insight produced"]
+    CMP --> DEV{"④ Deviation<br/>from target?"}
+    DEV -->|"No — on track"| LOG["⑤a Log outcome to<br/>knowledge base"]
+    DEV -->|"Yes — drift / waste / loop"| CLS["⑤b Classify deviation<br/>+ select intervention"]
+    CLS --> APP["⑥ Apply intervention:<br/>nudge → rule → escalation"]
+    APP --> MES["⑦ Measure outcome:<br/>closer to target?" ]
+    MES -->|"Yes"| REI["⑧ Reinforce rule in<br/>knowledge base"]
+    MES -->|"No — reclassify"| CLS
+    LOG -->|"feedback to<br/>next cycle"| ACT
+    REI -->|"feedback to<br/>next cycle"| ACT
+
+    style ACT fill:#6366f1,color:#fff
+    style OBS fill:#f97316,color:#fff
+    style CMP fill:#ef4444,color:#fff
+    style DEV fill:#eab308,color:#333
+    style LOG fill:#8b5cf6,color:#fff
+    style CLS fill:#f97316,color:#fff
+    style APP fill:#10b981,color:#fff
+    style MES fill:#8b5cf6,color:#fff
+    style REI fill:#8b5cf6,color:#fff
+```
+
+Step ③ is the key difference from the current open-loop state. The **target function — minimize context waste per insight produced** — is what turns a passive observer into a control system. Without it, the supervisor has no criterion for deciding whether an action is "good" or "bad," and no way to measure whether an intervention helped.
+
 ## Why This Matters for Regular Users Even More Than for Enterprises
 
 Enterprise agent deployments have teams, budgets, and the luxury of building custom guardrails. If an enterprise agent goes off track, someone reviews the logs, adjusts the config, and the next run is better. The feedback loop exists — it's just slow and expensive.
